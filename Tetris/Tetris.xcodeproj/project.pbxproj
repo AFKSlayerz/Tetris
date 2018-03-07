@@ -13,6 +13,7 @@
 		9702287A2032F848002CBC9A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 970228782032F848002CBC9A /* Main.storyboard */; };
 		9702287C2032F848002CBC9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9702287B2032F848002CBC9A /* Assets.xcassets */; };
 		9702288A2032F848002CBC9A /* TetrisTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970228892032F848002CBC9A /* TetrisTests.swift */; };
+		9738ED88204FE7E200B3238D /* Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9738ED87204FE7E200B3238D /* Block.swift */; };
 		97E0B101204E78DA003CC958 /* drop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 97E0B0FC204E78DA003CC958 /* drop.mp3 */; };
 		97E0B102204E78DA003CC958 /* levelup.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 97E0B0FD204E78DA003CC958 /* levelup.mp3 */; };
 		97E0B103204E78DA003CC958 /* gameover.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 97E0B0FE204E78DA003CC958 /* gameover.mp3 */; };
@@ -50,6 +51,7 @@
 		970228852032F848002CBC9A /* TetrisTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TetrisTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		970228892032F848002CBC9A /* TetrisTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TetrisTests.swift; sourceTree = "<group>"; };
 		9702288B2032F848002CBC9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9738ED87204FE7E200B3238D /* Block.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Block.swift; sourceTree = "<group>"; };
 		97E0B0FC204E78DA003CC958 /* drop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = drop.mp3; sourceTree = "<group>"; };
 		97E0B0FD204E78DA003CC958 /* levelup.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = levelup.mp3; sourceTree = "<group>"; };
 		97E0B0FE204E78DA003CC958 /* gameover.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameover.mp3; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				97E0B133204EA2BF003CC958 /* Info.plist */,
 				9702286E2032F848002CBC9A /* AppDelegate.swift */,
 				970228742032F848002CBC9A /* GameScene.swift */,
+				9738ED87204FE7E200B3238D /* Block.swift */,
 				970228762032F848002CBC9A /* GameViewController.swift */,
 				970228782032F848002CBC9A /* Main.storyboard */,
 				9702287B2032F848002CBC9A /* Assets.xcassets */,
@@ -275,6 +278,7 @@
 			files = (
 				970228752032F848002CBC9A /* GameScene.swift in Sources */,
 				97E0B137204EA651003CC958 /* Array2D.swift in Sources */,
+				9738ED88204FE7E200B3238D /* Block.swift in Sources */,
 				970228772032F848002CBC9A /* GameViewController.swift in Sources */,
 				9702286F2032F848002CBC9A /* AppDelegate.swift in Sources */,
 			);

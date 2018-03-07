@@ -15,7 +15,7 @@ class Array2D<T> {
     
     //Parameter <T> allows to store any type of data
     var array: Array<T?>
-    
+    //Initialisation
     init(columns: Int, rows: Int) {
         self.columns = columns
         self.rows = rows
