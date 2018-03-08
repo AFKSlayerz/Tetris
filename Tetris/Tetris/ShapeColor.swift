@@ -41,7 +41,9 @@ enum ColorPiece: Int, CustomStringConvertible {
             return " yellow"
         }
     }
-    
+    var description: String {
+        return self.spriteName
+    }
     //return a random color find it 'ColorPiece'
     static func random() -> ColorPiece {
         return ColorPiece(rawValue:Int(arc4random_uniform(MaxNumOfColors)))!

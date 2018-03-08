@@ -23,16 +23,5 @@ class GameArray<T> {
         //Instantiate array with a size of rows * columns
         array = Array<T?>(repeating: nil, count: rows * columns)
     }
-    
-    //Creating a custom subscript
-    subscript(column: Int, row: Int) -> T? {
-        get{
-            return array[(row * GameColumns) + column]      //Return the value at a given location
-        }
-        
-        set(newValue){
-            array[(row * GameColumns) + column] = newValue
-        }
-    }
 }
 
