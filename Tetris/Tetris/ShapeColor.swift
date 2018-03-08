@@ -1,18 +1,18 @@
 //
-//  Block.swift
+//  ShapeColor.swift
 //  Tetris
 //
-//  Created by Mikel Harnisch on 07.03.18.
+//  Created by Mikel Harnisch on 08.03.18.
 //  Copyright © 2018 Mikel & Co. All rights reserved.
 //
 
 import SpriteKit
 
 //Number of color available in the game
-let NumberOfColors: UInt32 = 6
+let MaxNumOfColors: UInt32 = 6
 
 //Enumaration of every color
-enum BlockColor: Int, CustomStringConvertible {
+enum ColorPiece: Int, CustomStringConvertible {
     
     //List if enumarable value
     case Blue = 0, Green, Purple, Red, Teal, Yellow
@@ -27,7 +27,7 @@ enum BlockColor: Int, CustomStringConvertible {
             
         case .Green:
             return "green"
-
+            
         case .Purple:
             return "purple"
             
@@ -41,23 +41,18 @@ enum BlockColor: Int, CustomStringConvertible {
             return " yellow"
         }
     }
-        
-        //Return the spriteName of the given color to describe the object
-        var description: String {
-            return self.spriteName
-        }
-        
-        //return a random color find it 'BlockColor'
-        static func random() -> BlockColor {
-            return BlockColor(rawValue:Int(arc4random_uniform(NumberOfColors)))!
-        }
+    
+    //return a random color find it 'ColorPiece'
+    static func random() -> ColorPiece {
+        return ColorPiece(rawValue:Int(arc4random_uniform(MaxNumOfColors)))!
     }
+}
 
-//Create Block class, Hashable allow to stock 'Block' into 'Array2D'
-class Block: Hashable, CustomStringConvertible {
+//Create Piece class, Hashable allow to stock 'Piece' into 'GameArray'
+class Piece: Hashable, CustomStringConvertible {
     
     //Constant
-    let color: BlockColor       //Cannot change color in mid game
+    let color: ColorPiece      //Cannot change color in mid game
     
     //Properties
     var column: Int
@@ -80,7 +75,7 @@ class Block: Hashable, CustomStringConvertible {
     }
     
     //Initialisation
-    init(column: Int, row: Int, color: BlockColor) {
+    init(column: Int, row: Int, color: ColorPiece) {
         self.column = column
         self.row = row
         self.color = color
@@ -88,8 +83,9 @@ class Block: Hashable, CustomStringConvertible {
 }
 
 
-func ==(lhs: Block, rhs: Block) -> Bool {
+func ==(lhs: Piece, rhs: Piece) -> Bool {
     return lhs.column == rhs.column && lhs.row == rhs.row && lhs.color.rawValue == rhs.color.rawValue
 }
+
 
 
