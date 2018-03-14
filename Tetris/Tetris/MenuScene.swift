@@ -26,9 +26,7 @@ class MenuScene: SKScene {
         addChild(playButton)
         
     }
-    
-    
-    required init(coder aDecoder: NSCoder) {
+        required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
