@@ -36,13 +36,13 @@ class GameScene: SKScene {
         Score = 6352
         anchorPoint = CGPoint(x: 0, y: 1.0)
         
-        // Background
+        //Background
         Background.position = CGPoint(x: 0, y: 0)                //The game will be built from the top-left
         Background.anchorPoint = CGPoint(x:0 , y: 1.0)           //The anchor point (top left)
         Background.size = CGSize(width: size.width / 1.4, height: size.height)           //The anchor point (top left)
         addChild(Background)
         
-        //BestScorecase
+        //BestScore case
         BestScorecase.position = CGPoint(x: 355.0, y: -135.0)  //The game will be built from the top-left
         BestScorecase.size = CGSize(width: 110, height: 45)  //The anchor point (top left)
         addChild(BestScorecase)
@@ -57,7 +57,7 @@ class GameScene: SKScene {
         BestScoreIn.position = CGPoint(x: 355.0, y: -140.0)
         addChild(BestScoreIn)*/
         
-        //Scorecase
+        //Score case
         Scorecase.position = CGPoint(x: 355.0, y: -260.0)  //The game will be built from the top-left
         Scorecase.size = CGSize(width: 110, height: 60)  //The anchor point (top left)
         addChild(Scorecase)
@@ -72,7 +72,7 @@ class GameScene: SKScene {
         ScoreIn.position = CGPoint(x: 355.0, y: -265.0)
         addChild(ScoreIn)*/
         
-        //Timecase
+        //Time case
         Timecase.position = CGPoint(x: 355.0, y: -485.0)  //The game will be built from the top-left
         Timecase.size = CGSize(width: 110, height: 45)  //The anchor point (top left)
         addChild(Timecase)
@@ -110,7 +110,7 @@ class GameScene: SKScene {
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+    //Scene changing & scene changing animation
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first
         let touchLocation = touch!.location(in: self)
