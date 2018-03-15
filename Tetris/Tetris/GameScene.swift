@@ -10,19 +10,30 @@ import SpriteKit
 
 class GameScene: SKScene {
     
-let PauseButton = SKSpriteNode(imageNamed: "PauseButton.png")
-let Background = SKSpriteNode(imageNamed: "background")
-let Scorecase = SKSpriteNode(imageNamed: "ScoreBoard.png")
-let BestScorecase = SKSpriteNode(imageNamed: "ScoreBoard.png")
-let Timecase = SKSpriteNode(imageNamed: "ScoreBoard.png")
-let RestartButton = SKLabelNode()
-let ScoreTxT = SKLabelNode()
-let BestScoreTxT = SKLabelNode()
-let TimeTxT = SKLabelNode()
-
+    let PauseButton = SKSpriteNode(imageNamed: "PauseButton.png")
+    let RestartButton = SKSpriteNode(imageNamed: "Restart.png")
+    let Background = SKSpriteNode(imageNamed: "background")
+    let Scorecase = SKSpriteNode(imageNamed: "ScoreBoard.png")
+    let BestScorecase = SKSpriteNode(imageNamed: "ScoreBoard.png")
+    let Timecase = SKSpriteNode(imageNamed: "ScoreBoard.png")
+    let ScoreTxT = SKLabelNode()
+    let BestScoreTxT = SKLabelNode()
+    let TimeTxT = SKLabelNode()
+    let RestartTxt = SKLabelNode()
+    let BestScoreIn = SKLabelNode()
+    let ScoreIn = SKLabelNode()
+    let TimeIn = SKLabelNode()
+    
     override init(size: CGSize) {
         super.init(size: size)
         
+        var BestScore:Int
+        var Score:Int
+        var Time:String
+        
+        Time = "4:05"
+        BestScore = 43443
+        Score = 6352
         anchorPoint = CGPoint(x: 0, y: 1.0)
         
         // Background
@@ -40,6 +51,11 @@ let TimeTxT = SKLabelNode()
         BestScoreTxT.text = "Best Scores"
         BestScoreTxT.position = CGPoint(x: 355.0, y: -100.0)
         addChild(BestScoreTxT)
+        /*BestScoreIn.fontSize = 22
+        BestScoreIn.fontColor = SKColor.black
+        BestScoreIn.text = "36464"
+        BestScoreIn.position = CGPoint(x: 355.0, y: -140.0)
+        addChild(BestScoreIn)*/
         
         //Scorecase
         Scorecase.position = CGPoint(x: 355.0, y: -260.0)  //The game will be built from the top-left
@@ -50,6 +66,11 @@ let TimeTxT = SKLabelNode()
         ScoreTxT.text = "Score"
         ScoreTxT.position = CGPoint(x: 355.0, y: -225.0)
         addChild(ScoreTxT)
+        /*ScoreIn.fontSize = 22
+        ScoreIn.fontColor = SKColor.black
+        ScoreIn.text = "3522"
+        ScoreIn.position = CGPoint(x: 355.0, y: -265.0)
+        addChild(ScoreIn)*/
         
         //Timecase
         Timecase.position = CGPoint(x: 355.0, y: -485.0)  //The game will be built from the top-left
@@ -60,6 +81,11 @@ let TimeTxT = SKLabelNode()
         TimeTxT.text = "Time"
         TimeTxT.position = CGPoint(x: 355.0, y: -450.0)
         addChild(TimeTxT)
+        /*TimeIn.fontSize = 22
+        TimeIn.fontColor = SKColor.black
+        TimeIn.text = "5:04"
+        TimeIn.position = CGPoint(x: 355.0, y: -490.0)
+        addChild(TimeIn)*/
         
         //Pause button
         PauseButton.position = CGPoint(x: 390, y: -26)
@@ -67,6 +93,18 @@ let TimeTxT = SKLabelNode()
         PauseButton.isUserInteractionEnabled = false
         PauseButton.size = CGSize(width: 60, height: 60)
         addChild(PauseButton)
+        
+        //Restart button
+        RestartButton.position = CGPoint(x: 355, y: -700)
+        RestartButton.name = "RestartButton"
+        RestartButton.isUserInteractionEnabled = false
+        RestartButton.size = CGSize(width: 110, height: 45)
+        addChild(RestartButton)
+        /*RestartTxt.fontSize = 22
+        RestartTxt.fontColor = SKColor.black
+        RestartTxt.text = "Restart"
+        RestartTxt.position = CGPoint(x: 355.0, y: -705.0)
+        addChild(RestartTxt)*/
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -89,6 +127,10 @@ let TimeTxT = SKLabelNode()
             let gameOverScene = GameOverScene(size: self.size)
             self.view?.presentScene(gameOverScene, transition: reveal)
             
+        }else if RestartButton.contains(touchLocation) {
+            let reveal = SKTransition.doorsOpenHorizontal(withDuration: 2.5)
+            let gameScene = GameScene(size: self.size)
+            self.view?.presentScene(gameScene, transition: reveal)
         }
     }
 }

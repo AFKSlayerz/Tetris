@@ -16,6 +16,7 @@
 		9712D7E9205168670077D99D /* GameArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9712D7E8205168670077D99D /* GameArray.swift */; };
 		9712D7EB205177310077D99D /* ShapeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9712D7EA205177310077D99D /* ShapeColor.swift */; };
 		9712D7ED20518A870077D99D /* ScoreBoard.png in Resources */ = {isa = PBXBuildFile; fileRef = 9712D7EC20518A870077D99D /* ScoreBoard.png */; };
+		9730CCFB205AA7C90051CDC9 /* Restart.png in Resources */ = {isa = PBXBuildFile; fileRef = 9730CCFA205AA7C90051CDC9 /* Restart.png */; };
 		97A217AD2057B76C00F30341 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A217AC2057B76C00F30341 /* MenuScene.swift */; };
 		97A217B12057CCD700F30341 /* PauseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A217B02057CCD700F30341 /* PauseScene.swift */; };
 		97A217BD2057D36300F30341 /* PauseButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 97A217BC2057D36300F30341 /* PauseButton.png */; };
@@ -53,6 +54,7 @@
 		9712D7E8205168670077D99D /* GameArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameArray.swift; sourceTree = "<group>"; };
 		9712D7EA205177310077D99D /* ShapeColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeColor.swift; sourceTree = "<group>"; };
 		9712D7EC20518A870077D99D /* ScoreBoard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ScoreBoard.png; sourceTree = "<group>"; };
+		9730CCFA205AA7C90051CDC9 /* Restart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Restart.png; path = ../../../../../Desktop/Restart.png; sourceTree = "<group>"; };
 		97A217AC2057B76C00F30341 /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
 		97A217B02057CCD700F30341 /* PauseScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseScene.swift; sourceTree = "<group>"; };
 		97A217BC2057D36300F30341 /* PauseButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = PauseButton.png; path = ../../../../../Desktop/PauseButton.png; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 		97E0B11E204E93E7003CC958 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9730CCFA205AA7C90051CDC9 /* Restart.png */,
 				97A217BC2057D36300F30341 /* PauseButton.png */,
 				97E0B121204E93E7003CC958 /* background.png */,
 				9712D7EC20518A870077D99D /* ScoreBoard.png */,
@@ -246,6 +249,7 @@
 				97E0B127204E93E7003CC958 /* background.png in Resources */,
 				97A217BD2057D36300F30341 /* PauseButton.png in Resources */,
 				9702287C2032F848002CBC9A /* Assets.xcassets in Resources */,
+				9730CCFB205AA7C90051CDC9 /* Restart.png in Resources */,
 				97E0B103204E78DA003CC958 /* gameover.mp3 in Resources */,
 				97E0B102204E78DA003CC958 /* levelup.mp3 in Resources */,
 				97E0B104204E78DA003CC958 /* theme.mp3 in Resources */,
