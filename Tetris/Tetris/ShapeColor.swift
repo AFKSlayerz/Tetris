@@ -12,61 +12,48 @@ import SpriteKit
 let MaxNumOfColors: UInt32 = 6
 
 //Enumaration of every color
-enum ColorPiece: Int, CustomStringConvertible {
+enum ShapeColor: Int, CustomStringConvertible {
     
-    //List if enumarable value
-    case Blue = 0, Green, Purple, Red, Teal, Yellow
+    case blue = 0, orange, purple, red, teal, yellow
     
-    //Return the correct filename for the given color
     var spriteName: String {
-        
         switch self {
-            
-        case .Blue:
+        case .blue:
             return "blue"
-            
-        case .Green:
-            return "green"
-            
-        case .Purple:
+        case .orange:
+            return "orange"
+        case .purple:
             return "purple"
-            
-        case .Red:
+        case .red:
             return "red"
-            
-        case .Teal:
+        case .teal:
             return "teal"
-            
-        case .Yellow:
-            return " yellow"
+        case .yellow:
+            return "yellow"
         }
     }
+    
+    //Return the a color
     var description: String {
         return self.spriteName
     }
-    //return a random color find it 'ColorPiece'
-    static func random() -> ColorPiece {
-        return ColorPiece(rawValue:Int(arc4random_uniform(MaxNumOfColors)))!
+    
+    static func random() -> ShapeColor {
+        return ShapeColor(rawValue:Int(arc4random_uniform(UInt32(MaxNumOfColors))))!
     }
 }
 
 //Create Piece class, Hashable allow to stock 'Piece' into 'GameArray'
-class Piece: Hashable, CustomStringConvertible {
+class Shape: Hashable, CustomStringConvertible {
     
     //Constant
-    let color: ColorPiece      //Cannot change color in mid game
+    let color: ShapeColor      //Cannot change color in mid game
     
-    //Properties
     var column: Int
     var row: Int
     var sprite: SKSpriteNode?
     
-    //Shorten block.color.spriteName to block.SpriteName
-    var spriteName: String {
-        return color.spriteName
-    }
     
-    //
     var hashValue: Int {
         return self.column ^ self.row
     }
@@ -77,7 +64,7 @@ class Piece: Hashable, CustomStringConvertible {
     }
     
     //Initialisation
-    init(column: Int, row: Int, color: ColorPiece) {
+    init(column: Int, row: Int, color: ShapeColor) {
         self.column = column
         self.row = row
         self.color = color
@@ -85,7 +72,7 @@ class Piece: Hashable, CustomStringConvertible {
 }
 
 
-func ==(lhs: Piece, rhs: Piece) -> Bool {
+func ==(lhs: Shape, rhs: Shape) -> Bool {
     return lhs.column == rhs.column && lhs.row == rhs.row && lhs.color.rawValue == rhs.color.rawValue
 }
 

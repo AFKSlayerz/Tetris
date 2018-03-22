@@ -8,6 +8,8 @@
 import UIKit
 import SpriteKit
 
+let TickTime = TimeInterval(600)     //Set the slowest speed that a Piece can go
+
 class GameScene: SKScene {
     
     let PauseButton = SKSpriteNode(imageNamed: "PauseButton.png")
@@ -23,6 +25,12 @@ class GameScene: SKScene {
     let BestScoreIn = SKLabelNode()
     let ScoreIn = SKLabelNode()
     let TimeIn = SKLabelNode()
+    
+    let teal = SKSpriteNode(imageNamed: "teal.png")
+    
+    var Tick:(() -> ())?
+    var TickLength = TickTime
+    var LastTick:Date?
     
     override init(size: CGSize) {
         super.init(size: size)
@@ -105,6 +113,29 @@ class GameScene: SKScene {
         RestartTxt.text = "Restart"
         RestartTxt.position = CGPoint(x: 355.0, y: -705.0)
         addChild(RestartTxt)*/
+        
+        GameArray[3][3] = teal
+
+    }
+    
+    override func update(_ currentTime: CFTimeInterval) {
+        /* Called before rendering each frame */
+        //If the condition fail execute else block, if there is no LastTick put the game in pause and stop icking
+        guard let LastTick = LastTick else {
+            return
+        }
+        let timePassed = LastTick.timeIntervalSinceNow * -1000.0
+        if timePassed > TickLength {
+            self.LastTick = Date()
+            Tick?()
+        }
+    }
+    func startTicking() {
+        LastTick = Date()
+    }
+    
+    func stopTicking() {
+        LastTick = nil
     }
     
     required init(coder aDecoder: NSCoder) {
