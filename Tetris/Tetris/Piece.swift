@@ -12,7 +12,7 @@ import SpriteKit
 let MaxNumOfColors: UInt32 = 6
 
 //Enumaration of every color
-enum ShapeColor: Int, CustomStringConvertible {
+enum PieceColor: Int, CustomStringConvertible {
     
     case blue = 0, orange, purple, red, teal, yellow
     
@@ -38,21 +38,24 @@ enum ShapeColor: Int, CustomStringConvertible {
         return self.spriteName
     }
     
-    static func random() -> ShapeColor {
-        return ShapeColor(rawValue:Int(arc4random_uniform(UInt32(MaxNumOfColors))))!
+    static func random() -> PieceColor {
+        return PieceColor(rawValue:Int(arc4random_uniform(UInt32(MaxNumOfColors))))!
     }
 }
 
 //Create Piece class, Hashable allow to stock 'Piece' into 'GameArray'
-class Shape: Hashable, CustomStringConvertible {
+class Piece: Hashable, CustomStringConvertible {
     
     //Constant
-    let color: ShapeColor      //Cannot change color in mid game
+    let color: PieceColor      //Cannot change color in mid game
     
     var column: Int
     var row: Int
     var sprite: SKSpriteNode?
     
+    var spriteName: String {
+        return color.description
+    }
     
     var hashValue: Int {
         return self.column ^ self.row
@@ -64,7 +67,7 @@ class Shape: Hashable, CustomStringConvertible {
     }
     
     //Initialisation
-    init(column: Int, row: Int, color: ShapeColor) {
+    init(column: Int, row: Int, color: PieceColor) {
         self.column = column
         self.row = row
         self.color = color
@@ -72,9 +75,10 @@ class Shape: Hashable, CustomStringConvertible {
 }
 
 
-func ==(lhs: Shape, rhs: Shape) -> Bool {
+func ==(lhs: Piece, rhs: Piece) -> Bool {
     return lhs.column == rhs.column && lhs.row == rhs.row && lhs.color.rawValue == rhs.color.rawValue
 }
+
 
 
 
