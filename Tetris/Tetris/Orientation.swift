@@ -55,7 +55,7 @@ let FourthBlockIdx: Int = 3
 
 class PieceOrientation: Hashable, CustomStringConvertible {
     // The color of the shape
-    let color: PieceColor
+    let color:PieceColor
     
     // The blocks comprising the shape
     var blocks = Array<Piece>()

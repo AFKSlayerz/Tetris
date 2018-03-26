@@ -19,12 +19,12 @@ let PointsPerLine = 10
 let LevelThreshold = 500
 
 protocol TetrisDelegate {
-    func gameDidEnd(_ swiftris: Tetris)
-    func gameDidBegin(_ swiftris: Tetris)
-    func gameShapeDidLand(_ swiftris: Tetris)
-    func gameShapeDidMove(_ swiftris: Tetris)
-    func gameShapeDidDrop(_ swiftris: Tetris)
-    func gameDidLevelUp(_ swiftris: Tetris)
+    func gameDidEnd(_ tetris: Tetris)
+    func gameDidBegin(_ tetris: Tetris)
+    func gameShapeDidLand(_ tetris: Tetris)
+    func gameShapeDidMove(_ tetris: Tetris)
+    func gameShapeDidDrop(_ tetris: Tetris)
+    func gameDidLevelUp(_ tetris: Tetris)
 }
 
 class Tetris {

@@ -128,7 +128,6 @@
 				97E0B108204E86B0003CC958 /* Sprites.atlas */,
 				975140702062634300B82621 /* Sounds */,
 				9751407B2062636A00B82621 /* Supporting Files */,
-				9703D7142063F3E800FEED5A /* Tetris.swift */,
 				9712D7E8205168670077D99D /* GameArray.swift */,
 				9703D7082063DE9600FEED5A /* Piece.swift */,
 				97714FA4206103EC005FC5D9 /* Orientation.swift */,
@@ -143,6 +142,7 @@
 				9703D7012063DBE900FEED5A /* zPiece.swift */,
 				9703D70A2063EDB100FEED5A /* LPiece.swift */,
 				9703D6FF2063DBDB00FEED5A /* sPiece.swift */,
+				9703D7142063F3E800FEED5A /* Tetris.swift */,
 			);
 			path = Tetris;
 			sourceTree = "<group>";
