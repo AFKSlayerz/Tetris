@@ -113,6 +113,7 @@ class PieceOrientation: Hashable, CustomStringConvertible {
         }
     }
     
+    //Called by rotateClockwise
     final func rotateBlocks(_ orientation: Orientation) {
         guard let blockRowColumnTranslation:Array<(columnDiff: Int, rowDiff: Int)> = blockRowColumnPositions[orientation] else {
             return

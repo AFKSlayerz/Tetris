@@ -53,50 +53,9 @@ class GameViewController: UIViewController, TetrisDelegate, UIGestureRecognizerD
         return true
     }
     
-    @IBAction func didTap(_ sender: UITapGestureRecognizer) {
-        tetris.rotateShape()
-    }
-    
-    @IBAction func didPan(_ sender: UIPanGestureRecognizer) {
-        let currentPoint = sender.translation(in: self.view)
-        if let originalPoint = panPointReference {
-            if abs(currentPoint.x - originalPoint.x) > (BlockSize * 0.9) {
-                if sender.velocity(in: self.view).x > CGFloat(0) {
-                    tetris.moveShapeRight()
-                    panPointReference = currentPoint
-                } else {
-                    tetris.moveShapeLeft()
-                    panPointReference = currentPoint
-                }
-            }
-        } else if sender.state == .began {
-            panPointReference = currentPoint
-        }
-    }
-    
-    @IBAction func didSwipe(_ sender: UISwipeGestureRecognizer) {
-        tetris.dropShape()
-    }
-    
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        return true
-    }
-    
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        if gestureRecognizer is UISwipeGestureRecognizer {
-            if otherGestureRecognizer is UIPanGestureRecognizer {
-                return true
-            }
-        } else if gestureRecognizer is UIPanGestureRecognizer {
-            if otherGestureRecognizer is UITapGestureRecognizer {
-                return true
-            }
-        }
-        return false
-    }
-    
     func didTick() {
         tetris.letShapeFall()
+        tetris.rotateShape()
     }
     
     func nextShape() {

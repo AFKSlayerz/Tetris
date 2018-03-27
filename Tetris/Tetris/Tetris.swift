@@ -174,17 +174,7 @@ class Tetris {
         }
         return (removedLines, fallenBlocks)
     }
-    
-    func dropShape() {
-        guard let shape = fallingShape else {
-            return
-        }
-        while detectIllegalPlacement() == false {
-            shape.lowerShapeByOneRow()
-        }
-        shape.raiseShapeByOneRow()
-        delegate?.gameShapeDidDrop(self)
-    }
+
     
     func letShapeFall() {
         guard let shape = fallingShape else {
@@ -207,37 +197,12 @@ class Tetris {
     }
     
     func rotateShape() {
-        guard let shape = fallingShape else {
+        guard let piece = fallingShape else {
             return
         }
-        shape.rotateClockwise()
+        piece.rotateClockwise()
         guard detectIllegalPlacement() == false else {
-            shape.rotateCounterClockwise()
-            return
-        }
-        delegate?.gameShapeDidMove(self)
-    }
-    
-    
-    func moveShapeLeft() {
-        guard let shape = fallingShape else {
-            return
-        }
-        shape.shiftLeftByOneColumn()
-        guard detectIllegalPlacement() == false else {
-            shape.shiftRightByOneColumn()
-            return
-        }
-        delegate?.gameShapeDidMove(self)
-    }
-    
-    func moveShapeRight() {
-        guard let shape = fallingShape else {
-            return
-        }
-        shape.shiftRightByOneColumn()
-        guard detectIllegalPlacement() == false else {
-            shape.shiftLeftByOneColumn()
+            piece.rotateCounterClockwise()
             return
         }
         delegate?.gameShapeDidMove(self)
