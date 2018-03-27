@@ -39,7 +39,7 @@ class GameViewController: UIViewController, TetrisDelegate, UIGestureRecognizerD
         // Create and configure the scene.
         scene = GameScene(size: skView.bounds.size)
         scene.scaleMode = .aspectFill
-        scene.Tick = didTick
+        scene.Tick = DidTick
         
         tetris = Tetris()
         tetris.delegate = self
@@ -53,18 +53,18 @@ class GameViewController: UIViewController, TetrisDelegate, UIGestureRecognizerD
         return true
     }
     
-    func didTick() {
+    func DidTick() {
         tetris.letShapeFall()
         tetris.rotateShape()
     }
     
     func nextShape() {
         let newShapes = tetris.newShape()
-        guard let fallingShape = newShapes.fallingShape else {
+        guard let FallingPiece = newShapes.FallingPiece else {
             return
         }
         self.scene.addPreviewShapeToScene(newShapes.nextShape!) {}
-        self.scene.movePreviewShape(fallingShape) {
+        self.scene.movePreviewShape(FallingPiece) {
             self.view.isUserInteractionEnabled = true
             self.scene.startTicking()
         }
@@ -104,7 +104,7 @@ class GameViewController: UIViewController, TetrisDelegate, UIGestureRecognizerD
     
     func gameShapeDidDrop(_ tetris: Tetris) {
         scene.stopTicking()
-        scene.redrawShape(tetris.fallingShape!) {
+        scene.redrawShape(tetris.FallingPiece!) {
             tetris.letShapeFall()
         }
     }
@@ -124,6 +124,6 @@ class GameViewController: UIViewController, TetrisDelegate, UIGestureRecognizerD
     }
     
     func gameShapeDidMove(_ tetris: Tetris) {
-        scene.redrawShape(tetris.fallingShape!) {}
+        scene.redrawShape(tetris.FallingPiece!) {}
     }
 }

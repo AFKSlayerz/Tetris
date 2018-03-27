@@ -41,13 +41,6 @@ class GameScene: SKScene {
     override init(size: CGSize) {
         super.init(size: size)
     
-        var BestScore:Int
-        var Score:Int
-        var Time:String
-        
-        Time = "4:05"
-        BestScore = 43443
-        Score = 6352
         anchorPoint = CGPoint(x: 0, y: 1.0)
         
         let background = SKSpriteNode(imageNamed: "background.png")

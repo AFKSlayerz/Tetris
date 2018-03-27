@@ -114,7 +114,7 @@ class PieceOrientation: Hashable, CustomStringConvertible {
     }
     
     //Called by rotateClockwise
-    final func rotateBlocks(_ orientation: Orientation) {
+    final func RotatePiece(_ orientation: Orientation) {
         guard let blockRowColumnTranslation:Array<(columnDiff: Int, rowDiff: Int)> = blockRowColumnPositions[orientation] else {
             return
         }
@@ -126,13 +126,13 @@ class PieceOrientation: Hashable, CustomStringConvertible {
     
     final func rotateClockwise() {
         let newOrientation = Orientation.Rotation(orientation, clockwise: true)
-        rotateBlocks(newOrientation)
+        RotatePiece(newOrientation)
         orientation = newOrientation
     }
     
     final func rotateCounterClockwise() {
         let newOrientation = Orientation.Rotation(orientation, clockwise: false)
-        rotateBlocks(newOrientation)
+        RotatePiece(newOrientation)
         orientation = newOrientation
     }
     
@@ -164,7 +164,7 @@ class PieceOrientation: Hashable, CustomStringConvertible {
     final func moveTo(_ column: Int, row:Int) {
         self.column = column
         self.row = row
-        rotateBlocks(orientation)
+        RotatePiece(orientation)
     }
     
     final class func random(_ startingColumn:Int, startingRow:Int) -> PieceOrientation {
