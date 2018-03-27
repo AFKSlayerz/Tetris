@@ -7,7 +7,7 @@
 import UIKit
 import SpriteKit
 
-let TickTime = TimeInterval(600)     //Set the slowest speed that a Piece can go
+let TickTime = TimeInterval(200)     //Set the slowest speed that a Piece can go
 let BlockSize:CGFloat = 24.0
 
 class GameScene: SKScene {
@@ -57,48 +57,48 @@ class GameScene: SKScene {
         Gameplay.addChild(GameplayPiece)
         
         //BestScore case
-        BestScorecase.position = CGPoint(x: 335.0, y: -160.0)  //The game will be built from the top-left
+        BestScorecase.position = CGPoint(x: 330.0, y: -160.0)  //The game will be built from the top-left
         BestScorecase.size = CGSize(width: 65, height: 30)  //The anchor point (top left)
         addChild(BestScorecase)
         BestScoreTxT.fontSize = 15
         BestScoreTxT.fontColor = SKColor.white
         BestScoreTxT.text = "Best Scores"
-        BestScoreTxT.position = CGPoint(x: 335.0, y: -142.0)
+        BestScoreTxT.position = CGPoint(x: 330.0, y: -142.0)
         addChild(BestScoreTxT)
 
         
         //Score case
-        Scorecase.position = CGPoint(x: 335.0, y: -238.0)  //The game will be built from the top-left
+        Scorecase.position = CGPoint(x: 330.0, y: -238.0)  //The game will be built from the top-left
         Scorecase.size = CGSize(width: 65, height: 30)  //The anchor point (top left)
         addChild(Scorecase)
         ScoreTxT.fontSize = 15
         ScoreTxT.fontColor = SKColor.white
         ScoreTxT.text = "Score"
-        ScoreTxT.position = CGPoint(x: 335.0, y: -220.0)
+        ScoreTxT.position = CGPoint(x: 330.0, y: -220.0)
         addChild(ScoreTxT)
         
         //Time case
-        Timecase.position = CGPoint(x: 335.0, y: -316.0)  //The game will be built from the top-left
+        Timecase.position = CGPoint(x: 330.0, y: -316.0)  //The game will be built from the top-left
         Timecase.size = CGSize(width: 65, height: 30)  //The anchor point (top left)
         addChild(Timecase)
         TimeTxT.fontSize = 15
         TimeTxT.fontColor = SKColor.white
         TimeTxT.text = "Time"
-        TimeTxT.position = CGPoint(x: 335.0, y: -298.0)
+        TimeTxT.position = CGPoint(x: 330.0, y: -298.0)
         addChild(TimeTxT)
         
         //Pause button
-        PauseButton.position = CGPoint(x: 200, y: -600)
+        PauseButton.position = CGPoint(x: 185, y: -600)
         PauseButton.name = "PauseButton"
         PauseButton.isUserInteractionEnabled = false
-        PauseButton.size = CGSize(width: 40, height: 40)
+        PauseButton.size = CGSize(width: 100, height: 100)
         addChild(PauseButton)
         
         //Restart button
-        RestartButton.position = CGPoint(x: 355, y: -700)
+        RestartButton.position = CGPoint(x: 330, y: -475)
         RestartButton.name = "RestartButton"
         RestartButton.isUserInteractionEnabled = false
-        RestartButton.size = CGSize(width: 55, height: 22)
+        RestartButton.size = CGSize(width: 75, height: 35)
         addChild(RestartButton)
         
     }
@@ -225,7 +225,7 @@ class GameScene: SKScene {
             self.view?.presentScene(gameOverScene, transition: reveal)
             
         }*/else if RestartButton.contains(touchLocation) {
-            let reveal = SKTransition.doorsOpenHorizontal(withDuration: 2.5)
+            let reveal = SKTransition.doorsOpenHorizontal(withDuration: 1.5)
             let gameScene = GameScene(size: self.size)
             self.view?.presentScene(gameScene, transition: reveal)
         }

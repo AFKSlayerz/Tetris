@@ -36,9 +36,9 @@ class iPiece:PieceOrientation {
     
     override var bottomBlocksForOrientations: [Orientation: Array<Piece>] {
         return [
-            Orientation.Zero:       [blocks[FourthBlockIdx]],
+            Orientation.Zero:       [blocks[FirstBlockIdx]],
             Orientation.Ninety:     blocks,
-            Orientation.HundredEighty:  [blocks[FourthBlockIdx]],
+            Orientation.HundredEighty:  [blocks[FirstBlockIdx]],
             Orientation.TwoHundredSeventy: blocks
         ]
     }
