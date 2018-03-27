@@ -26,7 +26,7 @@ class GameArray<T> {
     
     subscript(GameColumn: Int, GameRow: Int) -> T? {
         get {
-            return GameArray[(GameRow * GameColumns) + GameColumn]                  // return an appropriate subscript value here
+            return GameArray[(GameRow * GameColumns) + GameColumn]                 
         }
         set(newValue) {
             GameArray[(GameRow * GameColumns) + GameColumn] = newValue                  // perform a suitable setting action here

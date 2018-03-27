@@ -8,7 +8,7 @@ import UIKit
 import SpriteKit
 
 let TickTime = TimeInterval(600)     //Set the slowest speed that a Piece can go
-let BlockSize:CGFloat = 20.0
+let BlockSize:CGFloat = 24.0
 
 class GameScene: SKScene {
     
@@ -61,64 +61,57 @@ class GameScene: SKScene {
         let gameBoardTexture = SKTexture(imageNamed: "gameboard.png")
         let gameBoard = SKSpriteNode(texture: gameBoardTexture, size: CGSize(width: BlockSize * CGFloat(NumColumns), height: BlockSize * CGFloat(NumRows)))
         gameBoard.anchorPoint = CGPoint(x:0, y:1.0)
-        gameBoard.size = CGSize(width: size.width / 1.4, height: size.height / 1.03)           //The anchor point (top left)
+        gameBoard.size = CGSize(width: size.width / 1.39, height: size.height / 1.39)           //The anchor point (top left)
         gameBoard.position = LayerPosition
         
         shapeLayer.position = LayerPosition
         shapeLayer.addChild(gameBoard)
         gameLayer.addChild(shapeLayer)
         
-        /*
-        //Background
-        Background.position = CGPoint(x: 0, y: 0)                //The game will be built from the top-left
-        Background.anchorPoint = CGPoint(x:0 , y: 1.0)           //The anchor point (top left)
-        Background.size = CGSize(width: size.width / 1.4, height: size.height)           //The anchor point (top left)
-        addChild(Background)
-        
         //BestScore case
-        BestScorecase.position = CGPoint(x: 355.0, y: -135.0)  //The game will be built from the top-left
-        BestScorecase.size = CGSize(width: 110, height: 45)  //The anchor point (top left)
+        BestScorecase.position = CGPoint(x: 335.0, y: -160.0)  //The game will be built from the top-left
+        BestScorecase.size = CGSize(width: 65, height: 30)  //The anchor point (top left)
         addChild(BestScorecase)
-        BestScoreTxT.fontSize = 22
+        BestScoreTxT.fontSize = 15
         BestScoreTxT.fontColor = SKColor.white
         BestScoreTxT.text = "Best Scores"
-        BestScoreTxT.position = CGPoint(x: 355.0, y: -100.0)
+        BestScoreTxT.position = CGPoint(x: 335.0, y: -142.0)
         addChild(BestScoreTxT)
 
         
         //Score case
-        Scorecase.position = CGPoint(x: 355.0, y: -260.0)  //The game will be built from the top-left
-        Scorecase.size = CGSize(width: 110, height: 60)  //The anchor point (top left)
+        Scorecase.position = CGPoint(x: 335.0, y: -238.0)  //The game will be built from the top-left
+        Scorecase.size = CGSize(width: 65, height: 30)  //The anchor point (top left)
         addChild(Scorecase)
-        ScoreTxT.fontSize = 22
+        ScoreTxT.fontSize = 15
         ScoreTxT.fontColor = SKColor.white
         ScoreTxT.text = "Score"
-        ScoreTxT.position = CGPoint(x: 355.0, y: -225.0)
+        ScoreTxT.position = CGPoint(x: 335.0, y: -220.0)
         addChild(ScoreTxT)
         
         //Time case
-        Timecase.position = CGPoint(x: 355.0, y: -485.0)  //The game will be built from the top-left
-        Timecase.size = CGSize(width: 110, height: 45)  //The anchor point (top left)
+        Timecase.position = CGPoint(x: 335.0, y: -316.0)  //The game will be built from the top-left
+        Timecase.size = CGSize(width: 65, height: 30)  //The anchor point (top left)
         addChild(Timecase)
-        TimeTxT.fontSize = 22
+        TimeTxT.fontSize = 15
         TimeTxT.fontColor = SKColor.white
         TimeTxT.text = "Time"
-        TimeTxT.position = CGPoint(x: 355.0, y: -450.0)
+        TimeTxT.position = CGPoint(x: 335.0, y: -298.0)
         addChild(TimeTxT)
         
         //Pause button
-        PauseButton.position = CGPoint(x: 390, y: -26)
+        PauseButton.position = CGPoint(x: 200, y: -600)
         PauseButton.name = "PauseButton"
         PauseButton.isUserInteractionEnabled = false
-        PauseButton.size = CGSize(width: 60, height: 60)
+        PauseButton.size = CGSize(width: 40, height: 40)
         addChild(PauseButton)
         
         //Restart button
         RestartButton.position = CGPoint(x: 355, y: -700)
         RestartButton.name = "RestartButton"
         RestartButton.isUserInteractionEnabled = false
-        RestartButton.size = CGSize(width: 110, height: 45)
-        addChild(RestartButton)*/
+        RestartButton.size = CGSize(width: 55, height: 22)
+        addChild(RestartButton)
         
     }
     
