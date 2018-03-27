@@ -37,10 +37,10 @@ class GameScene: SKScene {
     var LastTick:Date?
     var textureCache = Dictionary<String, SKTexture>()
     var tetris:Tetris!
-
+    
     override init(size: CGSize) {
         super.init(size: size)
-        
+    
         var BestScore:Int
         var Score:Int
         var Time:String
@@ -50,6 +50,25 @@ class GameScene: SKScene {
         Score = 6352
         anchorPoint = CGPoint(x: 0, y: 1.0)
         
+        let background = SKSpriteNode(imageNamed: "background.png")
+        background.position = CGPoint(x: 0, y: 0)
+        background.anchorPoint = CGPoint(x: 0, y: 1.0)
+        background.size = CGSize(width: size.width, height: size.height)           //The anchor point (top left)
+        addChild(background)
+        
+        addChild(gameLayer)
+        
+        let gameBoardTexture = SKTexture(imageNamed: "gameboard.png")
+        let gameBoard = SKSpriteNode(texture: gameBoardTexture, size: CGSize(width: BlockSize * CGFloat(NumColumns), height: BlockSize * CGFloat(NumRows)))
+        gameBoard.anchorPoint = CGPoint(x:0, y:1.0)
+        gameBoard.size = CGSize(width: size.width / 1.4, height: size.height / 1.03)           //The anchor point (top left)
+        gameBoard.position = LayerPosition
+        
+        shapeLayer.position = LayerPosition
+        shapeLayer.addChild(gameBoard)
+        gameLayer.addChild(shapeLayer)
+        
+        /*
         //Background
         Background.position = CGPoint(x: 0, y: 0)                //The game will be built from the top-left
         Background.anchorPoint = CGPoint(x:0 , y: 1.0)           //The anchor point (top left)
@@ -99,7 +118,7 @@ class GameScene: SKScene {
         RestartButton.name = "RestartButton"
         RestartButton.isUserInteractionEnabled = false
         RestartButton.size = CGSize(width: 110, height: 45)
-        addChild(RestartButton)
+        addChild(RestartButton)*/
         
     }
     
@@ -144,7 +163,7 @@ class GameScene: SKScene {
                 textureCache[piece.spriteName] = texture
             }
             let sprite = SKSpriteNode(texture: texture)
-            sprite.position = pointForColumn(piece.column, row:piece.row - 2)
+            sprite.position = pointForColumn(piece.column, row:piece.row - 4)
             shapeLayer.addChild(sprite)
             piece.sprite = sprite
             
@@ -203,35 +222,6 @@ class GameScene: SKScene {
                 longestDuration = max(longestDuration, duration + delay)
             }
         }
-        
-        for rowToRemove in linesToRemove {
-            for block in rowToRemove {
-                let randomRadius = CGFloat(UInt(arc4random_uniform(400) + 100))
-                let goLeft = arc4random_uniform(100) % 2 == 0
-                
-                var point = pointForColumn(block.column, row: block.row)
-                point = CGPoint(x: point.x + (goLeft ? -randomRadius : randomRadius), y: point.y)
-                
-                let randomDuration = TimeInterval(arc4random_uniform(2)) + 0.5
-                var startAngle = CGFloat(Double.pi)
-                var endAngle = startAngle * 2
-                if goLeft {
-                    endAngle = startAngle
-                    startAngle = 0
-                }
-                let archPath = UIBezierPath(arcCenter: point, radius: randomRadius, startAngle: startAngle, endAngle: endAngle, clockwise: goLeft)
-                let archAction = SKAction.follow(archPath.cgPath, asOffset: false, orientToPath: true, duration: randomDuration)
-                archAction.timingMode = .easeIn
-                let sprite = block.sprite!
-                sprite.zPosition = 100
-                sprite.run(
-                    SKAction.sequence(
-                        [SKAction.group([archAction, SKAction.fadeOut(withDuration: TimeInterval(randomDuration))]),
-                         SKAction.removeFromParent()]))
-            }
-        }
-        
-        run(SKAction.wait(forDuration: longestDuration), completion:completion)
     }
     
     
@@ -247,13 +237,13 @@ class GameScene: SKScene {
             let pauseScene = PauseScene(size: self.size)
             self.view?.presentScene(pauseScene, transition: reveal)
             
-        }else if Background.contains(touchLocation) {
+        }/*else if Background.contains(touchLocation) {
             
             let reveal = SKTransition.doorsOpenVertical(withDuration: 0.5)
             let gameOverScene = GameOverScene(size: self.size)
             self.view?.presentScene(gameOverScene, transition: reveal)
             
-        }else if RestartButton.contains(touchLocation) {
+        }*/else if RestartButton.contains(touchLocation) {
             let reveal = SKTransition.doorsOpenHorizontal(withDuration: 2.5)
             let gameScene = GameScene(size: self.size)
             self.view?.presentScene(gameScene, transition: reveal)

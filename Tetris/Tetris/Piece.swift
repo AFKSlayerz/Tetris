@@ -14,14 +14,14 @@ let MaxNumOfColors: UInt32 = 6
 //Enumaration of every color
 enum PieceColor: Int, CustomStringConvertible {
     
-    case blue = 0, orange, purple, red, teal, yellow
+    case blue = 0, green, purple, red, teal, yellow
     
     var spriteName: String {
         switch self {
         case .blue:
             return "blue"
-        case .orange:
-            return "orange"
+        case .green:
+            return "green"
         case .purple:
             return "purple"
         case .red:

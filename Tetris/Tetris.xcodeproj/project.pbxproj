@@ -27,6 +27,7 @@
 		9703D7132063F02500FEED5A /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 9703D7122063F02500FEED5A /* background.png */; };
 		9703D7152063F3E800FEED5A /* Tetris.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9703D7142063F3E800FEED5A /* Tetris.swift */; };
 		9712D7E9205168670077D99D /* GameArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9712D7E8205168670077D99D /* GameArray.swift */; };
+		972B5E3D206A1EC400A2369F /* gameboard.png in Resources */ = {isa = PBXBuildFile; fileRef = 972B5E3C206A1EC400A2369F /* gameboard.png */; };
 		97714FA5206103EC005FC5D9 /* Orientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97714FA4206103EC005FC5D9 /* Orientation.swift */; };
 		97A217AD2057B76C00F30341 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A217AC2057B76C00F30341 /* MenuScene.swift */; };
 		97A217B12057CCD700F30341 /* PauseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A217B02057CCD700F30341 /* PauseScene.swift */; };
@@ -68,6 +69,7 @@
 		9703D7122063F02500FEED5A /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		9703D7142063F3E800FEED5A /* Tetris.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tetris.swift; sourceTree = "<group>"; };
 		9712D7E8205168670077D99D /* GameArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameArray.swift; sourceTree = "<group>"; };
+		972B5E3C206A1EC400A2369F /* gameboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameboard.png; sourceTree = "<group>"; };
 		975140712062634300B82621 /* drop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = drop.mp3; sourceTree = "<group>"; };
 		975140722062634300B82621 /* levelup.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = levelup.mp3; sourceTree = "<group>"; };
 		975140732062634300B82621 /* gameover.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameover.mp3; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 			children = (
 				9703D7122063F02500FEED5A /* background.png */,
 				9703D7102063F01F00FEED5A /* PauseButton.png */,
+				972B5E3C206A1EC400A2369F /* gameboard.png */,
 				9703D70E2063F01600FEED5A /* Restart.png */,
 				9703D70C2063F00C00FEED5A /* ScoreBoard.png */,
 			);
@@ -264,6 +267,7 @@
 			files = (
 				9703D70F2063F01600FEED5A /* Restart.png in Resources */,
 				9702287A2032F848002CBC9A /* Main.storyboard in Resources */,
+				972B5E3D206A1EC400A2369F /* gameboard.png in Resources */,
 				9703D7132063F02500FEED5A /* background.png in Resources */,
 				9703D70D2063F00C00FEED5A /* ScoreBoard.png in Resources */,
 				9702287C2032F848002CBC9A /* Assets.xcassets in Resources */,

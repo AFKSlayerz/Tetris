@@ -168,4 +168,3 @@ class GameViewController: UIViewController, TetrisDelegate, UIGestureRecognizerD
         scene.redrawShape(tetris.fallingShape!) {}
     }
 }
-
