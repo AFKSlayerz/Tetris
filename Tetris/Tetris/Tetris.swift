@@ -19,11 +19,11 @@ let LinePoints = 10
 let UpLevel = 500
 
 protocol TetrisDelegate {
-    func gameDidEnd(_ tetris: Tetris)
+    func GameEnded(_ tetris: Tetris)
     func gameDidBegin(_ tetris: Tetris)
-    func gameShapeDidLand(_ tetris: Tetris)
-    func gameShapeDidMove(_ tetris: Tetris)
-    func gameShapeDidDrop(_ tetris: Tetris)
+    func GamePieceLanded(_ tetris: Tetris)
+    func GamePieceMoved(_ tetris: Tetris)
+    func GamePieceDropped(_ tetris: Tetris)
     func gameDidLevelUp(_ tetris: Tetris)
 }
 
@@ -85,7 +85,7 @@ class Tetris {
             blockArray[block.column, block.row] = block
         }
         FallingPiece = nil
-        delegate?.gameShapeDidLand(self)
+        delegate?.GamePieceLanded(self)
     }
     
     
@@ -105,7 +105,7 @@ class Tetris {
     func endGame() {
         score = 0
         level = 1
-        delegate?.gameDidEnd(self)
+        delegate?.GameEnded(self)
     }
     
     func removeAllBlocks() -> Array<Array<Piece>> {
@@ -189,7 +189,7 @@ class Tetris {
                 settleShape()
             }
         } else {
-            delegate?.gameShapeDidMove(self)
+            delegate?.GamePieceMoved(self)
             if detectTouch() {
                 settleShape()
             }
@@ -205,7 +205,7 @@ class Tetris {
             piece.rotateCounterClockwise()
             return
         }
-        delegate?.gameShapeDidMove(self)
+        delegate?.GamePieceMoved(self)
     }
 }
 

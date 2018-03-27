@@ -14,23 +14,16 @@ class GameScene: SKScene {
     
     let PauseButton = SKSpriteNode(imageNamed: "PauseButton.png")
     let RestartButton = SKSpriteNode(imageNamed: "Restart.png")
-    let Background = SKSpriteNode(imageNamed: "background")
     let Scorecase = SKSpriteNode(imageNamed: "ScoreBoard.png")
     let BestScorecase = SKSpriteNode(imageNamed: "ScoreBoard.png")
     let Timecase = SKSpriteNode(imageNamed: "ScoreBoard.png")
     let ScoreTxT = SKLabelNode()
     let BestScoreTxT = SKLabelNode()
     let TimeTxT = SKLabelNode()
-    let RestartTxt = SKLabelNode()
-    let BestScoreIn = SKLabelNode()
-    let ScoreIn = SKLabelNode()
-    let TimeIn = SKLabelNode()
     
-    let teal = SKSpriteNode(imageNamed: "teal.png")
-    
-    let gameLayer = SKNode()
-    let shapeLayer = SKNode()
-    let LayerPosition = CGPoint(x: 6, y: -6)
+    let Gameplay = SKNode()
+    let GameplayPiece = SKNode()
+    let GameplayPosition = CGPoint(x: 6, y: -6)
 
     var Tick:(() -> ())?
     var TickLength = TickTime
@@ -43,23 +36,25 @@ class GameScene: SKScene {
     
         anchorPoint = CGPoint(x: 0, y: 1.0)
         
+        //Background
         let background = SKSpriteNode(imageNamed: "background.png")
         background.position = CGPoint(x: 0, y: 0)
         background.anchorPoint = CGPoint(x: 0, y: 1.0)
         background.size = CGSize(width: size.width, height: size.height)           //The anchor point (top left)
         addChild(background)
         
-        addChild(gameLayer)
+        addChild(Gameplay)
         
+        //Gameboard background
         let gameBoardTexture = SKTexture(imageNamed: "gameboard.png")
         let gameBoard = SKSpriteNode(texture: gameBoardTexture, size: CGSize(width: BlockSize * CGFloat(NumColumns), height: BlockSize * CGFloat(NumRows)))
         gameBoard.anchorPoint = CGPoint(x:0, y:1.0)
         gameBoard.size = CGSize(width: size.width / 1.39, height: size.height / 1.39)           //The anchor point (top left)
-        gameBoard.position = LayerPosition
+        gameBoard.position = GameplayPosition
         
-        shapeLayer.position = LayerPosition
-        shapeLayer.addChild(gameBoard)
-        gameLayer.addChild(shapeLayer)
+        GameplayPiece.position = GameplayPosition
+        GameplayPiece.addChild(gameBoard)
+        Gameplay.addChild(GameplayPiece)
         
         //BestScore case
         BestScorecase.position = CGPoint(x: 335.0, y: -160.0)  //The game will be built from the top-left
@@ -136,8 +131,8 @@ class GameScene: SKScene {
     }
     
     func pointForColumn(_ column: Int, row: Int) -> CGPoint {
-        let x = LayerPosition.x + (CGFloat(column) * BlockSize) + (BlockSize / 2)
-        let y = LayerPosition.y - ((CGFloat(row) * BlockSize) + (BlockSize / 2))
+        let x = GameplayPosition.x + (CGFloat(column) * BlockSize) + (BlockSize / 2)
+        let y = GameplayPosition.y - ((CGFloat(row) * BlockSize) + (BlockSize / 2))
         return CGPoint(x: x, y: y)
     }
     
@@ -150,7 +145,7 @@ class GameScene: SKScene {
             }
             let sprite = SKSpriteNode(texture: texture)
             sprite.position = pointForColumn(piece.column, row:piece.row - 4)
-            shapeLayer.addChild(sprite)
+            GameplayPiece.addChild(sprite)
             piece.sprite = sprite
             
             // Animation

@@ -85,7 +85,7 @@ class GameViewController: UIViewController, TetrisDelegate, UIGestureRecognizerD
         }
     }
     
-    func gameDidEnd(_ tetris: Tetris) {
+    func GameEnded(_ tetris: Tetris) {
         view.isUserInteractionEnabled = false
         scene.stopTicking()
         scene.animateCollapsingLines(tetris.removeAllBlocks(), fallenBlocks: tetris.removeAllBlocks()) {
@@ -102,28 +102,29 @@ class GameViewController: UIViewController, TetrisDelegate, UIGestureRecognizerD
         }
     }
     
-    func gameShapeDidDrop(_ tetris: Tetris) {
+    func GamePieceDropped(_ tetris: Tetris) {
         scene.stopTicking()
         scene.redrawShape(tetris.FallingPiece!) {
             tetris.letShapeFall()
         }
     }
     
-    func gameShapeDidLand(_ tetris: Tetris) {
+    //
+    func GamePieceLanded(_ tetris: Tetris) {
         scene.stopTicking()
         self.view.isUserInteractionEnabled = false
         let removedLines = tetris.removeCompletedLines()
         if removedLines.linesRemoved.count > 0 {
             self.scoreLabel.text = "\(tetris.score)"
             scene.animateCollapsingLines(removedLines.linesRemoved, fallenBlocks:removedLines.fallenBlocks) {
-                self.gameShapeDidLand(tetris)
+                self.GamePieceLanded(tetris)
             }
         } else {
             nextShape()
         }
     }
     
-    func gameShapeDidMove(_ tetris: Tetris) {
+    func GamePieceMoved(_ tetris: Tetris) {
         scene.redrawShape(tetris.FallingPiece!) {}
     }
 }
