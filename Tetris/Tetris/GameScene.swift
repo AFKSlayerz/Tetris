@@ -7,7 +7,7 @@
 import UIKit
 import SpriteKit
 
-let TickTime = TimeInterval(200)     //Set the slowest speed that a Piece can go
+let TickTime = TimeInterval(400)     //Set the slowest speed that a Piece can go
 let BlockSize:CGFloat = 24.0
 
 class GameScene: SKScene {

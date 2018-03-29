@@ -23,7 +23,7 @@ class iPiece:PieceOrientation {
      
      */
     
-    // Hinges about the second block
+    // Hinges about the sescond block
     
     override var blockRowColumnPositions: [Orientation: Array<(columnDiff: Int, rowDiff: Int)>] {
         return [
