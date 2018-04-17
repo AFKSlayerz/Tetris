@@ -44,24 +44,24 @@ enum Orientation: Int, CustomStringConvertible {
 }
 
 
-// The number of total shape varieities
-let NumShapeTypes: UInt32 = 7
+// The number of total piece varieities
+let NumPieceTypes: UInt32 = 7
 
-// Shape indexes
+// Piece indexes
 let FirstBlockIdx: Int = 0
 let SecondBlockIdx: Int = 1
 let ThirdBlockIdx: Int = 2
 let FourthBlockIdx: Int = 3
 
 class PieceOrientation: Hashable, CustomStringConvertible {
-    // The color of the shape
+    // The color of the piece
     let color:PieceColor
     
-    // The blocks comprising the shape
+    // The blocks comprising the piece
     var blocks = Array<Piece>()
-    // The current orientation of the shape
+    // The current orientation of the piece
     var orientation: Orientation
-    // The column and row representing the shape's anchor point
+    // The column and row representing the piece's anchor point
     var column, row:Int
     
     // Required Overrides
@@ -136,22 +136,24 @@ class PieceOrientation: Hashable, CustomStringConvertible {
         orientation = newOrientation
     }
     
-    final func lowerShapeByOneRow() {
+    //Increment the rows by 1
+    final func lowerPieceByOneRow() {
         shiftBy(0, rows:1)
     }
-    
-    final func raiseShapeByOneRow() {
+    //Increment the rows by -1
+    final func raisePieceByOneRow() {
         shiftBy(0, rows:-1)
     }
-    
-    final func shiftRightByOneColumn() {
+    //Increment the column by 1
+    final func MoveRightByOneColumn() {
         shiftBy(1, rows:0)
     }
-    
-    final func shiftLeftByOneColumn() {
+    //Increment the column by -1
+    final func MoveLeftByOneColumn() {
         shiftBy(-1, rows:0)
     }
     
+    //Calculate where the piece is supposed to be after it moved
     final func shiftBy(_ columns: Int, rows: Int) {
         self.column += columns
         self.row += rows
@@ -161,6 +163,7 @@ class PieceOrientation: Hashable, CustomStringConvertible {
         }
     }
     
+    //Move the piece where it was calculated
     final func moveTo(_ column: Int, row:Int) {
         self.column = column
         self.row = row
@@ -168,7 +171,7 @@ class PieceOrientation: Hashable, CustomStringConvertible {
     }
     
     final class func random(_ startingColumn:Int, startingRow:Int) -> PieceOrientation {
-        switch Int(arc4random_uniform(NumShapeTypes)) {
+        switch Int(arc4random_uniform(NumPieceTypes)) {
         case 0:
             return oPiece(column:startingColumn, row:startingRow)
         case 1:

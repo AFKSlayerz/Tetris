@@ -29,7 +29,7 @@ protocol TetrisDelegate {
 
 class Tetris {
     var blockArray:GameArray<Piece>
-    var nextShape:PieceOrientation?
+    var NextPiece:PieceOrientation?
     var FallingPiece:PieceOrientation?
     var delegate:TetrisDelegate?
     
@@ -38,35 +38,35 @@ class Tetris {
     
     init() {
         FallingPiece = nil
-        nextShape = nil
+        NextPiece = nil
         blockArray = GameArray<Piece>(GameColumns: NumColumns, GameRows: NumRows)
     }
     
     func beginGame() {
-        if (nextShape == nil) {
-            nextShape = PieceOrientation.random(PreviewColumn, startingRow: PreviewRow)
+        if (NextPiece == nil) {
+            NextPiece = PieceOrientation.random(PreviewColumn, startingRow: PreviewRow)
         }
         delegate?.gameDidBegin(self)
     }
     
-    func newShape() -> (FallingPiece:PieceOrientation?, nextShape:PieceOrientation?) {
-        FallingPiece = nextShape
-        nextShape = PieceOrientation.random(PreviewColumn, startingRow: PreviewRow)
+    func NewPiece() -> (FallingPiece:PieceOrientation?, NextPiece:PieceOrientation?) {
+        FallingPiece = NextPiece
+        NextPiece = PieceOrientation.random(PreviewColumn, startingRow: PreviewRow)
         FallingPiece?.moveTo(StartingColumn, row: StartingRow)
         guard detectIllegalPlacement() == false else {
-            nextShape = FallingPiece
-            nextShape!.moveTo(PreviewColumn, row: PreviewRow)
+            NextPiece = FallingPiece
+            NextPiece!.moveTo(PreviewColumn, row: PreviewRow)
             endGame()
             return (nil, nil)
         }
-        return (FallingPiece, nextShape)
+        return (FallingPiece, NextPiece)
     }
     
     func detectIllegalPlacement() -> Bool {
-        guard let shape = FallingPiece else {
+        guard let piece = FallingPiece else {
             return false
         }
-        for block in shape.blocks {
+        for block in piece.blocks {
             if block.column < 0 || block.column >= NumColumns
                 || block.row < 0 || block.row >= NumRows {
                 return true
@@ -77,11 +77,11 @@ class Tetris {
         return false
     }
     
-    func settleShape() {
-        guard let shape = FallingPiece else {
+    func SettlePiece() {
+        guard let piece = FallingPiece else {
             return
         }
-        for block in shape.blocks {
+        for block in piece.blocks {
             blockArray[block.column, block.row] = block
         }
         FallingPiece = nil
@@ -90,10 +90,10 @@ class Tetris {
     
     
     func detectTouch() -> Bool {
-        guard let shape = FallingPiece else {
+        guard let piece = FallingPiece else {
             return false
         }
-        for bottomBlock in shape.bottomBlocks {
+        for bottomBlock in piece.bottomBlocks {
             if bottomBlock.row == NumRows - 1
                 || blockArray[bottomBlock.column, bottomBlock.row + 1] != nil {
                 return true
@@ -176,27 +176,27 @@ class Tetris {
     }
 
     //Called by DidTick
-    func letShapeFall() {
-        guard let shape = FallingPiece else {
+    func LetPieceFall() {
+        guard let piece = FallingPiece else {
             return
         }
-        shape.lowerShapeByOneRow()
+        piece.lowerPieceByOneRow()
         if detectIllegalPlacement() {
-            shape.raiseShapeByOneRow()
+            piece.raisePieceByOneRow()
             if detectIllegalPlacement() {
                 endGame()
             } else {
-                settleShape()
+                SettlePiece()
             }
         } else {
             delegate?.GamePieceMoved(self)
             if detectTouch() {
-                settleShape()
+                SettlePiece()
             }
         }
     }
     
-    func rotateShape() {
+    func RotatePiece() {
         guard let piece = FallingPiece else {
             return
         }

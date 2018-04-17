@@ -10,17 +10,15 @@ class iPiece:PieceOrientation {
     /*
      Orientations 0 and 180:
      
-     | 0•|
+     | 0 |
      | 1 |
      | 2 |
      | 3 |
      
      Orientations 90 and 270:
      
-     | 0 | 1•| 2 | 3 |
-     
-     • marks the row/column indicator for the shape
-     
+     | 0 | 1 | 2 | 3 |
+          
      */
     
     // Hinges about the sescond block

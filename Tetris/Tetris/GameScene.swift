@@ -135,8 +135,8 @@ class GameScene: SKScene {
         let y = GameplayPosition.y - ((CGFloat(row) * BlockSize) + (BlockSize / 2))
         return CGPoint(x: x, y: y)
     }
-    
-    func addPreviewShapeToScene(_ orientation:PieceOrientation, completion:@escaping () -> ()) {
+    //add the preview piece to the top of the game layer
+    func addPreviewPieceToScene(_ orientation:PieceOrientation, completion:@escaping () -> ()) {
         for piece in orientation.blocks {
             var texture = textureCache[piece.spriteName]
             if texture == nil {
@@ -159,7 +159,7 @@ class GameScene: SKScene {
         run(SKAction.wait(forDuration: 0.2), completion: completion)
     }
     
-    func movePreviewShape(_ orientation:PieceOrientation, completion:@escaping () -> ()) {
+    func movePreviewPiece(_ orientation:PieceOrientation, completion:@escaping () -> ()) {
         for piece in orientation.blocks {
             let sprite = piece.sprite!
             let moveTo = pointForColumn(piece.column, row:piece.row)
@@ -171,7 +171,7 @@ class GameScene: SKScene {
         }
         run(SKAction.wait(forDuration: 0.2), completion: completion)
     }
-    func redrawShape(_ orientation:PieceOrientation, completion:@escaping () -> ()) {
+    func redrawPiece(_ orientation:PieceOrientation, completion:@escaping () -> ()) {
         for piece in orientation.blocks {
             let sprite = piece.sprite!
             let moveTo = pointForColumn(piece.column, row:piece.row)
@@ -185,7 +185,7 @@ class GameScene: SKScene {
         }
     }
     
-    func animateCollapsingLines(_ linesToRemove: Array<Array<Piece>>, fallenBlocks: Array<Array<Piece>>, completion:@escaping () -> ()) {
+    func CollapsingLine(_ linesToRemove: Array<Array<Piece>>, fallenBlocks: Array<Array<Piece>>, completion:@escaping () -> ()) {
         var longestDuration: TimeInterval = 0
         
         for (columnIdx, column) in fallenBlocks.enumerated() {

@@ -1,5 +1,5 @@
 //
-//  ShapeColor.swift
+//  Piece.swift
 //  Tetris
 //
 //  Created by Mikel Harnisch on 08.03.18.
